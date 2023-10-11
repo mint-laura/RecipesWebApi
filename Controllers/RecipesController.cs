@@ -12,8 +12,18 @@ namespace RecipesWebApi.Controllers
         {
             string[] recipes = { "Oxtail", "Curry Chicken", "Dumplings" };
             
-            if (recipes.Any()) return NotFound();
+            if (!recipes.Any()) return NotFound();
             return Ok(recipes);
+        }
+
+        [HttpDelete]
+        public ActionResult DeleteRecipes()
+        {
+            bool badThingsHappend = false;
+
+            if(badThingsHappend) return BadRequest();
+            
+            return NoContent();
         }
     }
 }
