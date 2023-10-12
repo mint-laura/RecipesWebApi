@@ -1,11 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using RecipesWebApi.Config;
+using RecipesWebApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.Configure<DbSettings>(builder.Configuration.GetSection("MongoDatabase"));
+builder.Services.AddSingleton<RecipeService>();
 
+builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

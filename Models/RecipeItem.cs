@@ -1,5 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace RecipesWebApi.Models
 {
@@ -8,10 +8,10 @@ namespace RecipesWebApi.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
-        public string Title { get; init; }
-        public string Description { get; init; }
-        public IEnumerable<string> Directions { get; init; }
-        public IEnumerable<string> Ingredients { get; init; }
-        public DateTime Updated { get; init; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public IEnumerable<string> Directions { get; set; }
+        public IEnumerable<string> Ingredients { get; set; }
+        public DateTime Updated { get; set; }
     }
 }
