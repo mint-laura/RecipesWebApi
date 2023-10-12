@@ -16,8 +16,8 @@ namespace RecipesWebApi.Controllers
             return Ok(recipes);
         }
 
-        [HttpDelete]
-        public ActionResult DeleteRecipes()
+        [HttpDelete("{id}")]
+        public ActionResult DeleteRecipes(string id)
         {
             bool badThingsHappend = false;
 
