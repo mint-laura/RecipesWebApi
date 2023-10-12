@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using RecipesWebApi.Models;
 
 namespace RecipesWebApi.Controllers
 {
@@ -8,12 +9,15 @@ namespace RecipesWebApi.Controllers
     public class RecipesController : ControllerBase
     {
         [HttpGet]
-        public ActionResult GetRecipes()
+        public ActionResult GetRecipes([FromQuery]int count)
         {
-            string[] recipes = { "Oxtail", "Curry Chicken", "Dumplings" };
+            RecipeItem[] recipes = { 
+                new() { Title = "Oxtail" },
+                new() { Title = "Curry Chicken" },
+                new() { Title = "Dumplings" }
+            };
             
-            if (!recipes.Any()) return NotFound();
-            return Ok(recipes);
+            return Ok(recipes.Take(count));
         }
 
         [HttpDelete("{id}")]
