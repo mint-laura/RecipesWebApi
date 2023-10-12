@@ -8,7 +8,7 @@ namespace RecipesWebApi.Controllers
     [ApiController]
     public class RecipesController : ControllerBase
     {
-        [HttpGet("GetRecipes")]
+        [HttpGet]
         public ActionResult GetRecipes([FromQuery]int count)
         {
             RecipeItem[] recipes = { 
@@ -20,19 +20,8 @@ namespace RecipesWebApi.Controllers
             return Ok(recipes.Take(count));
         }
 
-        [HttpPost("CreateRecipe")]
-        public ActionResult CreateRecipe([FromBody]RecipeItem NewRecipe) 
-        {
-            //Validate and save to database
-            bool badThingsHappend = false;
-
-            if (badThingsHappend) return BadRequest();
-
-            return Created("", NewRecipe);
-        }
-
-        [HttpDelete("DeleteRecipe/{id}")]
-        public ActionResult DeleteRecipe(string id)
+        [HttpDelete("{id}")]
+        public ActionResult DeleteRecipes(string id)
         {
             bool badThingsHappend = false;
 
